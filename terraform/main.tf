@@ -19,3 +19,10 @@ module "k8s_nodes" {
   vpc_id            = module.vpc.vpc_id
   key_name          = var.key_name
 }
+
+module "k8s_control_plane" {
+  source            = "./modules/k8s_control_plane"
+  subnet_id         = module.vpc.private_subnet_id
+  vpc_id            = module.vpc.vpc_id
+  key_name          = var.key_name
+}
