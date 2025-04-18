@@ -19,3 +19,12 @@ module "k8s_nodes" {
   vpc_id            = module.vpc.vpc_id
   key_name          = var.key_name
 }
+
+
+module "namespace" {
+  source            = "./modules/namespace"
+  cluster_name      = module.k8s_nodes.cluster_name
+  namespace         = var.namespace
+  k8s_nodes_subnet_id = module.k8s_nodes.subnet_id
+  
+}
