@@ -19,3 +19,19 @@ module "k8s_nodes" {
   vpc_id            = module.vpc.vpc_id
   key_name          = var.key_name
 }
+
+provider "aws" {
+  region = var.region
+  
+}
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0"
+    }
+  }
+
+  required_version = ">= 1.0.0"
+}
