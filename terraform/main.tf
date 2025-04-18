@@ -28,3 +28,13 @@ module "namespace" {
   k8s_nodes_subnet_id = module.k8s_nodes.subnet_id
   
 }
+
+module "k8s_control_plane" {
+  source            = "./modules/k8s_control_plane"
+  subnet_id         = module.vpc.private_subnet_id
+  vpc_id            = module.vpc.vpc_id
+  key_name          = var.key_name
+}
+
+test branch
+
