@@ -20,6 +20,15 @@ module "k8s_nodes" {
   key_name          = var.key_name
 }
 
+
+module "namespace" {
+  source            = "./modules/namespace"
+  cluster_name      = module.k8s_nodes.cluster_name
+  namespace         = var.namespace
+  k8s_nodes_subnet_id = module.k8s_nodes.subnet_id
+  
+}
+
 module "k8s_control_plane" {
   source            = "./modules/k8s_control_plane"
   subnet_id         = module.vpc.private_subnet_id
@@ -28,3 +37,4 @@ module "k8s_control_plane" {
 }
 
 test branch
+
